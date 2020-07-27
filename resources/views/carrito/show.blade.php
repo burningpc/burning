@@ -13,9 +13,6 @@
     <div class="align-items-right">
         <a class="btn btn-primary" href="{{ route('carrito.show') }}">Si no aparece su producto agregado, Presioname!</a> 
         <a class="btn btn-primary" href="{{ route('mostrar_producto') }}">Seguir comprando</a> 
-    @auth
-        <a class="btn btn-primary" href=" ">Ir al pago</a> 
-    @endauth
     </div>
     </div>
     <hr>
@@ -59,6 +56,11 @@
         <td><span class="badge badge-primary badge-pill">{{ $auxCantidadTotal}}</span> </td>
         <td>{{ $auxPrecioTotal}} </td>
         <td align="center"><a class="btn btn-danger" href="{{route('carrito.borrarTodo')}}">Eliminar Todo</a> </td>
+        <td align="center">
+            @auth
+                <a class="btn btn-primary" href="{{ route('pedidos.index') }}">Ir al pago</a> 
+            @endauth
+        </td>
     </tr>
     </tbody>
     </table>

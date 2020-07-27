@@ -3,6 +3,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+.navbar-custom {
+    background-color: #ff5500;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.8);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
 .fa {
   padding: 20px;
   font-size: 30px;
@@ -123,8 +140,8 @@
   </div>
   <!-- Footer Links -->
   
-      <div class="bg-danger">
-        <div class="container bg-danger">
+      <div class="navbar-custom">
+        <div class="container navbar-custom">
           <!-- Grid row-->
           <div class="row py-4 d-flex align-items-center">
             <!-- Grid column -->

@@ -50,12 +50,12 @@
                             @else
                             <a href="" class="btn btn-primary ">Stock Insuficiente</a>
                             @endif
-                            <a href="{{route('editar_producto', $item)}}" class="btn btn-warning ">Editar</a>
+                            <a href="{{route('editar_producto', $item)}}" class="btn btn-secondary ">Editar</a>
                             
                             <form action="{{route('eliminar_producto', $item)}}" method="POST" class="d-inline">
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-danger btn-block" type="submit" onclick="return confirm('¿Borrar producto?') ">Eliminar</button>
+                                <button class="btn navbar-custom btn-block" type="submit" onclick="return confirm('¿Borrar producto?') ">Eliminar</button>
                             </form>     
                         @endif
                         @endauth

@@ -1,7 +1,24 @@
+<style>
+.navbar-custom {
+    background-color: #ff5500;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.8);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+</style>
 
-
-
-<nav class="navbar navbar-expand-sm  bg-danger text-light nav justify-content-center">
+<nav class="navbar navbar-expand-sm  navbar-custom text-light nav justify-content-center">
   <!-- Brand -->
   <!-- Links -->
   <ul class="navbar-nav">
