@@ -28,8 +28,12 @@ class PedidoController extends Controller
         return view('pedidos.add_pedido');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $rut='123234234';//borrar
+        $id=123;
+        $obs = 'asdasd asdc';
+
         $id_carro = 0;
         $total = 0;
         $fecha = new \DateTime();
@@ -59,10 +63,10 @@ class PedidoController extends Controller
         pedido::create([
             'id_carrito'=> $id_carro,
             'total'=> $total,
-            'rut_cliente'=>request('Rut1'),
-            'rut_vendedor'=>request('ID2'),
+            'rut_cliente'=>$rut,
+            'rut_vendedor'=>$id,
             'fecha_compra'=> $fecha,
-            'descripcion'=>request('observacion')
+            'descripcion'=>$obs
         ]);
         return redirect()->route('pedidos.index');
     }

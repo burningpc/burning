@@ -7,10 +7,8 @@
 @section('content')
     <div class="container">
         <div class="bg-white py-4 px-4 shadow-lg rounded">
-            <form action="{{route('pedidos.store', $Rut1)}}" method="POST" enctype="multipart/form-data">
-                @csrf
-                
-                @include('partials.validation-errors')
+            <form  method="POST" action="{{route('pedidos.store')}}"  >
+
                 <div  style="width:1050px">
                     <img src="{{asset('CABEZA_BOLETA.png')}}" class="img-fluid " alt="Responsive image">
                 </div>
@@ -45,7 +43,7 @@
                     @forelse ($user as $userItem)
                         @if($userItem->typeuser == 'Encargado de ventas') <!--Luego comprobar tambien por su disponibilidad-->
                             <input type = "text" name="Nombre2" placeholder="Nombre" class="form-control mb-2" value="{{ $userItem->name }}">
-                            <input type = "text" name="ID2" placeholder="Id" class="form-control mb-2" value="{{ $userItem->id }}"> 
+                            <input type = "number" name="ID2" placeholder="Id" class="form-control mb-2" value="{{ $userItem->id }}"> 
                             <input type = "text" name="Mail2" placeholder="Mail" class="form-control mb-2" value="{{ $userItem->email }}">
                             @php
                                 $existe = 1;
