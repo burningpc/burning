@@ -58,13 +58,13 @@
     </li>
   @elseif(Auth::user()->typeuser=='Ensamblador')
       <li class="nav-item">
-        <a class="nav-link text-light" href="{{ route('academics.index') }}">Equipos</a>
+        <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Equipos</a>
       </li>
       <li class="nav-item">
       <a class="nav-link text-light" href="{{ route('facultades.show') }}">Reviews</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('facultades.show') }}">Confirmacion de envios</a>
+      <a class="nav-link text-light" href="{{ route('mostrar_pedidos') }}">Confirmacion de envios</a>
     </li>
   @elseif(Auth::user()->typeuser=='Encargados de ventas')         
     <li class="nav-item">

@@ -30,7 +30,7 @@
                         </div>
                         <div class="image-container img-thumbnail ">
                             @if(!@empty($item->Imagen))
-                                    <img src="{{asset('storage').'/'.($item->Imagen)}}" >
+                                <img src="{{asset('storage').'/'.($item->Imagen)}}" >
                             @endif
                         </div>
                         <div class="detail-container"> 
