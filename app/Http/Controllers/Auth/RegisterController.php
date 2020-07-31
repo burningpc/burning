@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Cliente;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -48,9 +49,12 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'dni' => ['required', 'string', 'max:9', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'typeuser'=>['required', 'string', 'max:50'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+
         ]);
     }
 
@@ -64,12 +68,16 @@ class RegisterController extends Controller
     {
         User::create([
             'name' => $data['name'],
+            'lastname' => $data['lastname'],
+            'dni' => $data['dni'],
             'email' => $data['email'],
             'typeuser'=> $data['typeuser'],
             'estado'=> $data['estado'],
             'password' => Hash::make($data['password']),
         ]);
-        return view('/home');
+        return view('/home');     
+
+        
     }
 
     public function index()
@@ -90,6 +98,9 @@ class RegisterController extends Controller
     {   
         $usuarios->update([
             'name' => request('name'),
+            'lastname' => request('lastname'),
+            'email' => request('email'),
+            'dni' => request('dni'),
             'password' => Hash::make(request('password')),
         ]);
 

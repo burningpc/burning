@@ -4,18 +4,7 @@
 Route::view('/', 'home')->name('home');
 Route::view('/quienes-somos', 'about')->name('about');
 
-Route::resource('academico','academicController')
-    ->names('academics')
-    ->parameters(['academico' => 'academic']);
 
-Route::get('/pautaEvaluaciones/{evaluacion}/crearEvaluacion', 'evaluacionController@createEvaluation')->name('evaluaciones.createEvaluation');
-Route::patch('/pautaEvaluaciones/promedio', 'evaluacionController@promedio')->name('evaluaciones.promedio');
-
-Route::resource('pautaEvaluaciones','evaluacionController')
-    ->names('evaluaciones')
-    ->parameters(['pautaEvaluaciones' => 'evaluacion']); 
-    
-Route::get('/export/{academic}', 'academicController@export')->name('academics.export');
 
 Route::view('/contacto', 'contact')->name('contact');
 Route::post('contact','MessageController@store')->name('messages.store');
@@ -35,28 +24,38 @@ Route::put('productos/editar/{id}', 'ProductoController@update')->name('producto
 
 Route::delete('productos/eliminar/{id}', 'ProductoController@destroy')->name('eliminar_producto');
 
-
-//-------------------------------------ENVIOS---------------------------------------------------
-Route::get('ensamblador/envios', 'EnviosController@index')->name('mostrar_pedidos');
-
-Route::get('ensamblador/ingresarEnvio/{id}', 'EnviosController@create')->name('ingresar_envio');
-
-Route::post('ensamblador/ingresarEnvio', 'EnviosController@store')->name('crear_envio');
-
-Route::get('ensamblador/editar/{id}', 'EnviosController@edit')->name('editar_envio');
-
-Route::put('ensamblador/editar/{id}', 'EnviosController@update')->name('envio_update');
-
-Route::delete('ensamblador/eliminar/{id}', 'EnviosController@destroy')->name('eliminar_envio');
-
-
-
 //-------------------------------------Carrito--------------------------------------------------- 
 Route::get('carrito/agregado/{id}', 'carritoController@añadir')->name('carrito.agregar');
 Route::get('carrito/show', 'carritoController@show')->name('carrito.show');
 Route::get('carrito/eliminar/{id}', 'carritoController@destroy')->name('carrito.borrar');
 Route::get('carrito/eliminar/', 'carritoController@destroyAll')->name('carrito.borrarTodo');
 
+
+
+//-------------------------------------Pedidos---------------------------------------------------
+Route::get('pedidos/pedido/', 'pedidoController@index')->name('pedidos.index'); //mostrar todos
+//-------------------------------------Insertar---------------------------------------------------
+Route::get('/pedidos/add_pedido/', 'pedidoController@create')->name('pedidos.add_pedido');
+Route::get('/add_pedido', 'pedidoController@store')->name('pedidos.store');
+
+
+
+Route::get('usuarios/{id}/eliminar', [
+    'uses' => 'Auth\RegisterController@eliminar',
+    'as' => 'eliminar'
+    ]);
+
+Route::get('usuarios/editcliente','ClienteController@create')->name('ingresar');    
+Route::post('usuarios/editcliente','ClienteController@Añadir')->name('ingresardatos');
+
+Route::get('/evaluacion2', 'evaluacionController@vertodo')->name('evaluacion');
+Route::get('descargar-evaluaciones', 'evaluacionController@pdf')->name('evaluaciones.pdf');
+
+Route::get('/evaluacionp/{academic}', 'evaluacionController@vertodop')->name('evaluacionp');
+Route::get('descargar-evaluaciones/{academic}', 'evaluacionController@pdfp')->name('evaluacionesp.pdf');
+
+Auth::routes(['register' => true]);
+ 
 
 
 //-------------------------------------Pedidos---------------------------------------------------
@@ -81,21 +80,4 @@ Route::patch('/facultades/{facultad}', 'facultadController@update')->name('facul
 Route::delete('/facultades/{facultad}', 'facultadController@destroy')->name('facultades.destroy');
 Route::patch('/facultades/{usuario}/usermod', 'facultadController@usermod')->name('facultades.usermod');
 //--------------------------------------------------------------------------------------------------
-
-
-
-Route::get('usuarios/{id}/eliminar', [
-    'uses' => 'Auth\RegisterController@eliminar',
-    'as' => 'eliminar'
-    ]);
-
-Route::get('/evaluacion2', 'evaluacionController@vertodo')->name('evaluacion');
-Route::get('descargar-evaluaciones', 'evaluacionController@pdf')->name('evaluaciones.pdf');
-
-Route::get('/evaluacionp/{academic}', 'evaluacionController@vertodop')->name('evaluacionp');
-Route::get('descargar-evaluaciones/{academic}', 'evaluacionController@pdfp')->name('evaluacionesp.pdf');
-
-Auth::routes(['register' => true]);
- 
-
 

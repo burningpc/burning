@@ -10,7 +10,8 @@
 
         <div class="d-flex justify-content-between align-items-center">
         <h1 class="text-danger">Productos On-fire!</h1>
-        @auth
+      <!-- Coloque el boton en el nav bar para que se viera mas ordenado   
+          @auth
             @if(Auth::user()->typeuser=='Administrador')
             <div class="btn-group btn-group-sm">
                 <a class="btn btn-primary" href="{{ route('ingresar_producto') }}">Ingresar nuevo producto</a> 
@@ -18,6 +19,7 @@
             @endif
         @endauth
         </div>
+        -->
 
         <div class="row row-cols-1 row-cols-md-4">
         
@@ -30,7 +32,7 @@
                         </div>
                         <div class="image-container img-thumbnail ">
                             @if(!@empty($item->Imagen))
-                                <img src="{{asset('storage').'/'.($item->Imagen)}}" >
+                                    <img src="{{asset('storage').'/'.($item->Imagen)}}" >
                             @endif
                         </div>
                         <div class="detail-container"> 

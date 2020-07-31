@@ -29,9 +29,17 @@
           </div>
         </a>
   @if(Auth::user()->typeuser=='Administrador')
-    <li class="nav-item">
-      <a class="nav-link text-light " href="{{ route('mostrar_producto') }}">Equipos</a>
+
+    <li class="nav-item dropdown ">
+      <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+        Equpos
+      </a>
+      <div class="dropdown-menu" >
+        <a class="dropdown-item" href="{{ route('mostrar_producto') }}">Ver Equipos</a>
+        <a class="dropdown-item " href="{{ route('ingresar_producto') }}" >Ingresar nuevo producto </a>
+      </div>
     </li>
+
     <li class="nav-item">
       <a class="nav-link text-light" href="{{ route('facultades.show') }}">Reviews</a>
     </li>
@@ -58,13 +66,13 @@
     </li>
   @elseif(Auth::user()->typeuser=='Ensamblador')
       <li class="nav-item">
-        <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Equipos</a>
+        <a class="nav-link text-light" href="{{ route('academics.index') }}">Equipos</a>
       </li>
       <li class="nav-item">
       <a class="nav-link text-light" href="{{ route('facultades.show') }}">Reviews</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('mostrar_pedidos') }}">Confirmacion de envios</a>
+      <a class="nav-link text-light" href="{{ route('facultades.show') }}">Confirmacion de envios</a>
     </li>
   @elseif(Auth::user()->typeuser=='Encargados de ventas')         
     <li class="nav-item">
@@ -112,10 +120,10 @@
             </div>
             <li class="nav-item dropdown ">
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
-                {{ Auth::user()->name }}
+                {{ Auth::user()->name}}
               </a>
               <div class="dropdown-menu" >
-                <a class="dropdown-item" href="#">Editar</a>
+                <a class="dropdown-item " href="{{ route('ingresar' )}}">Editar</a>
                 <a class="dropdown-item " href="#" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"> 
                     Cerrar sesión 

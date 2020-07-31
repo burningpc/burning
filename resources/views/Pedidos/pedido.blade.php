@@ -18,8 +18,8 @@
                 </h2>
                 <div class="input-group">
                     <input type = "text" name="Nombre1" placeholder="Nombre" class="form-control mb-2" value="{{ Auth::user()->name }}">
-                    <input type = "text" name="Apellido1" placeholder="Obtener de tabla cliente" class="form-control mb-2"> 
-                    <input type = "text" name="Rut1" placeholder="Obtener de tabla cliente" class="form-control mb-2">
+                    <input type = "text" name="Apellido1" placeholder="Obtener de tabla cliente" class="form-control mb-2" value="{{ Auth::user()->lastname }}"> 
+                    <input type = "text" name="Rut1" placeholder="Obtener de tabla cliente" class="form-control mb-2"value="{{ Auth::user()->dni }}">
                     <input type = "text" name="Mail1" placeholder="Mail" class="form-control mb-2 "value="{{ Auth::user()->email }}">
                 </div>
 
