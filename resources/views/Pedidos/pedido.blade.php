@@ -4,11 +4,12 @@
     pedido 
 @endsection
 
-@section('content')
+@section('content') 
     <div class="container">
         <div class="bg-white py-4 px-4 shadow-lg rounded">
             <form  method="POST" action="{{route('pedidos.store')}}"  >
-
+                @csrf
+                
                 <div  style="width:1050px">
                     <img src="{{asset('CABEZA_BOLETA.png')}}" class="img-fluid " alt="Responsive image">
                 </div>
@@ -17,20 +18,22 @@
                     DATOS PERSONALES
                 </h2>
                 <div class="input-group">
-                    <input type = "text" name="Nombre1" placeholder="Nombre" class="form-control mb-2" value="{{ Auth::user()->name }}">
-                    <input type = "text" name="Apellido1" placeholder="Obtener de tabla cliente" class="form-control mb-2" value="{{ Auth::user()->lastname }}"> 
-                    <input type = "text" name="Rut1" placeholder="Obtener de tabla cliente" class="form-control mb-2"value="{{ Auth::user()->dni }}">
-                    <input type = "text" name="Mail1" placeholder="Mail" class="form-control mb-2 "value="{{ Auth::user()->email }}">
+                
+                    <input type = "text" name="Nombre1" placeholder="Nombre" class="form-control mb-2" value="{{ $userCliente->name }}" readonly="readonly">
+                    <input type = "text" name="Apellido1" placeholder="Obtener de tabla cliente" class="form-control mb-2" value="{{ $userCliente->lastname1 }}" readonly="readonly"> 
+                    <input type = "text" name="Rut1" placeholder="Obtener de tabla cliente" class="form-control mb-2"value="{{ $userCliente->dni }}" readonly="readonly">
+                    <input type = "text" name="Mail1" placeholder="Mail" class="form-control mb-2" value="{{ $userCliente->email }}" readonly="readonly">
+
                 </div>
 
                 <h2 class="bg-secondary text-light" >
                     DATOS DE ENVÍO
                 </h2>
                 <div class="input-group">
-                    <input type = "text" name="Ciudad" placeholder="Ej: Springfield" class="form-control mb-2" >
-                    <input type = "text" name="Comuna" placeholder="Ej: Springfield" class="form-control mb-2"> 
-                    <input type = "text" name="Calle" placeholder="Ej: Av. Siempre viva" class="form-control mb-2">
-                    <input type = "text" name="Número" placeholder="Ej: #9999" class="form-control mb-2 ">
+                    <input type = "text" name="Ciudad" placeholder="Ej: Springfield" class="form-control mb-2" value="{{ $userCliente->city }}" readonly="readonly">
+                    <input type = "text" name="Comuna" placeholder="Ej: Springfield" class="form-control mb-2" value="{{ $userCliente->commune }}" readonly="readonly"> 
+                    <input type = "text" name="Calle" placeholder="Ej: Av. Siempre viva" class="form-control mb-2" value="{{ $userCliente->addres }}" readonly="readonly">
+                    <input type = "text" name="Número" placeholder="Ej: #123" class="form-control mb-2 " value="{{ $userCliente->number }}" readonly="readonly">
                 </div>
 
                 <h2 class="bg-secondary text-light" >
@@ -42,9 +45,9 @@
                     @endphp
                     @forelse ($user as $userItem)
                         @if($userItem->typeuser == 'Encargado de ventas') <!--Luego comprobar tambien por su disponibilidad-->
-                            <input type = "text" name="Nombre2" placeholder="Nombre" class="form-control mb-2" value="{{ $userItem->name }}">
-                            <input type = "number" name="ID2" placeholder="Id" class="form-control mb-2" value="{{ $userItem->id }}"> 
-                            <input type = "text" name="Mail2" placeholder="Mail" class="form-control mb-2" value="{{ $userItem->email }}">
+                            <input type = "text" name="Nombre2" placeholder="Nombre" class="form-control mb-2" value="{{ $userItem->name }}" readonly="readonly">
+                            <input type = "number" name="ID2" placeholder="Id" class="form-control mb-2" value="{{ $userItem->id }}" readonly="readonly"> 
+                            <input type = "text" name="Mail2" placeholder="Mail" class="form-control mb-2" value="{{ $userItem->email }}" readonly="readonly">
                             @php
                                 $existe = 1;
                             @endphp
@@ -52,9 +55,9 @@
                         @endif
                     @endforeach
                     @if($existe == 0)
-                        <input type = "text" name="Nombre2" placeholder="Nombre" class="form-control mb-2" value="No existe vendedor disponible">
-                        <input type = "text" name="ID2" placeholder="Id" class="form-control mb-2" value="No existe vendedor disponible"> 
-                        <input type = "text" name="Mail2" placeholder="Mail" class="form-control mb-2" value="No existe vendedor disponible">
+                        <input type = "text" name="Nombre2" placeholder="Nombre" class="form-control mb-2" value="No existe vendedor disponible" readonly="readonly">
+                        <input type = "text" name="ID2" placeholder="Id" class="form-control mb-2" value="No existe vendedor disponible" readonly="readonly"> 
+                        <input type = "text" name="Mail2" placeholder="Mail" class="form-control mb-2" value="No existe vendedor disponible" readonly="readonly">
                     @endif
                 </div>
 
@@ -63,7 +66,7 @@
                         Observación
                     </h3>
                 <div class="input-group">
-                    <input type = "text" name="observacion" placeholder="..." class="form-control mb-2" >
+                    <input type = "text" name="observacion" placeholder="Comentarios (opcional)" class="form-control mb-2" >
                 </div>
 
                 <h2 class="bg-secondary text-light" >
@@ -75,7 +78,7 @@
                         <tr>
                             <th scope="col">Producto</th>
                             <th scope="col">Cantidad</th>
-                            <th scope="col">Precio</th>
+                            <th scope="col">Precio Unitario</th>
                         </tr>
                     </thead>
                 </tbody>
@@ -110,20 +113,20 @@
                         METODO DE PAGO
                     </h2>
                     <div class="text-center">
-                    <br> <input type="text" name="numcard" class="form-control" placeholder="Ingrese numero de la tarjeta"> </br> 
+                    <br> <input type="text" name="numcard" class="form-control" placeholder="Ingrese numero de la tarjeta" required> </br> 
                     </div>
                     <div class="input-group">
-                    <br> <input type="text" name="mes" class="form-control" placeholder="Mes expiración"></br> &nbsp;&nbsp;
-                        <input type="text" name="ano" class="form-control" placeholder="Año expiración">&nbsp;&nbsp;
-                        <input type="text" name="CCV" class="form-control" placeholder="CCV">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br> <input type="text" name="mes" class="form-control" placeholder="Mes expiración" required></br> &nbsp;&nbsp;
+                        <input type="text" name="ano" class="form-control" placeholder="Año expiración" required>&nbsp;&nbsp;
+                        <input type="text" name="CCV" class="form-control" placeholder="CCV" required>&nbsp;&nbsp;&nbsp;&nbsp;
                         <div  style="width:50px">
                             <img src="{{asset('credit_card.png')}}" class="img-fluid" alt="Responsive image">
                         </div>
                     </div>
 
 
-                <a href="{{route('pedidos.store')}}" class="btn btn btn-outline-dark btn-lg btn-block">Pagar</a>
-                <a href="{{route('pedidos.store')}}" class="btn btn btn-outline-dark btn-lg btn-block">Cancelar</a>
+                <button class="btn btn btn-outline-dark btn-lg btn-block" type="submit">Pagar</button>
+                <a href="javascript:history.back()" class="btn btn btn-outline-dark btn-lg btn-block">Cancelar</a>
             </form>
         </div>
     </div>

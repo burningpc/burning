@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="container">
-        @if(session('mensaje'))
+        @if(session('mensaje')) 
             <div class="alert alert-succes shadow">
                 {{session('mensaje')}}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

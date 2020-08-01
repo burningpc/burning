@@ -37,7 +37,8 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        
+        $request->validate([ 
             'Nombre'=>'required',
             'Descripción'=>'required',
             'Precio'=>'required',
@@ -45,7 +46,6 @@ class ProductoController extends Controller
             'Tipo_producto'=>'required',
             'Imagen'=>'required'
         ]);
-
         $newProducto = new Producto;
         $newProducto->Nombre = $request->Nombre;
         $newProducto->Descripción = $request->Descripción;

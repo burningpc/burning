@@ -72,12 +72,12 @@
                             <div  class="col-md-6">
                             <select id="typeuser" type="typeuser" class="form-control @error('typeuser') is-invalid @enderror" name="typeuser" value="{{ old('typeuser') }}" required autocomplete="typeuser">
                                 <option> Cliente </option>
-<!--
+
                                 <option> Administrador</option>
                                 <option> Encargado de ventas </option>
                                 <option> Encargado de inventario </option>
                                 <option> Ensamblador</option>
--->
+
                             </select>
                             </div>
                             @error('typeuser')

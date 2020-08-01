@@ -109,7 +109,7 @@
     <li class="nav-item">
       <a class="navbar-brand" href="{{ route('carrito.show') }}">
         <div  style="width:35px">
-          <img src="{{asset('canasta.png')}}" class="img-fluid" alt="Responsive image">
+           <img src="{{asset('canasta.png')}}" class="img-fluid" alt="Responsive image">
         </div>
       </a>
     </li>
@@ -125,10 +125,10 @@
               <div class="dropdown-menu" >
                 <a class="dropdown-item " href="{{ route('ingresar' )}}">Editar</a>
                 <a class="dropdown-item " href="#" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();"> 
+                    document.getElementById('logout-form').submit();">
                     Cerrar sesión 
-                </a>
-              </div>
+                </a> 
+                
             </li>
 
   </ul>

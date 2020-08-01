@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePedidoTable extends Migration
 {
-    /**
+    /** 
      * Run the migrations.
      *
      * @return void
@@ -16,11 +16,16 @@ class CreatePedidoTable extends Migration
         Schema::create('pedido', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_carrito');
+            $table->string('infoCarrito');
             $table->bigInteger('total');
             $table->string('rut_cliente');
             $table->string('rut_vendedor');
             $table->date('fecha_compra');
             $table->string('descripcion');
+            $table->bigInteger('num_tarjeta');
+            $table->bigInteger('mes_tarjeta');
+            $table->bigInteger('ano_tarjeta');
+            $table->bigInteger('ccv_tarjeta');
             $table->timestamps();
         });
 

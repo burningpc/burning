@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Producto;
 use App\carrito;
 use App\user; 
-
+use Illuminate\Support\Facades\Auth;
 
 
 class carritoController extends Controller
@@ -24,6 +24,7 @@ class carritoController extends Controller
         $auxCantidad = $producto['Cantidad'];
         $newPedido = new carrito; 
         $carrito = carrito::get(); 
+        # ------ Actualización de stock ------
         foreach($carrito as $items){
             if($items['nombre_producto'] == $producto['Nombre']){
                 $carritoItem = carrito::findOrFail($items['id']);
@@ -37,6 +38,8 @@ class carritoController extends Controller
                 return view('carrito.show', compact('carrito'));
             }
         } 
+        # ------------------------------------
+        $newPedido->id = $producto['id'];
         $newPedido->nombre_producto = $producto['Nombre'];
         $newPedido->precio_producto = $producto['Precio'];
         $newPedido->cantidad_producto = 1;

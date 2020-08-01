@@ -10,16 +10,9 @@
 
         <div class="d-flex justify-content-between align-items-center">
         <h1 class="text-danger">Productos On-fire!</h1>
-      <!-- Coloque el boton en el nav bar para que se viera mas ordenado   
-          @auth
-            @if(Auth::user()->typeuser=='Administrador')
-            <div class="btn-group btn-group-sm">
-                <a class="btn btn-primary" href="{{ route('ingresar_producto') }}">Ingresar nuevo producto</a> 
-            </div>
-            @endif
-        @endauth
+   
         </div>
-        -->
+        
 
         <div class="row row-cols-1 row-cols-md-4">
         
@@ -38,20 +31,24 @@
                         <div class="detail-container"> 
                             Descripción: {{$item->Descripción}}
                         </div>
+                        <div class="detail-container">
+                            Código: {{$item->id}}
+                        </div>
                         <div class="detail-container"> 
                             Stock Disponible: {{$item->Cantidad}}
                         </div>
                         <div class="price-container mt-auto">
                             <h4>${{$item->Precio}}</h4>
                         </div>
+                        
  
                         @auth
-                        @if(Auth::user()->estado=='activo' or Auth::user()->typeuser=='Administrador')
                             @if($item->Cantidad > 0)
                             <a href="{{route('carrito.agregar', $item)}}" class="btn btn-primary ">Agregar al carrito</a>
                             @else
                             <a href="" class="btn btn-primary ">Stock Insuficiente</a>
                             @endif
+                            @if(Auth::user()->typeuser=='Administrador')
                             <a href="{{route('editar_producto', $item)}}" class="btn btn-secondary ">Editar</a>
                             
                             <form action="{{route('eliminar_producto', $item)}}" method="POST" class="d-inline">

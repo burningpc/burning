@@ -31,12 +31,11 @@ Route::get('carrito/eliminar/{id}', 'carritoController@destroy')->name('carrito.
 Route::get('carrito/eliminar/', 'carritoController@destroyAll')->name('carrito.borrarTodo');
 
 
-
 //-------------------------------------Pedidos---------------------------------------------------
 Route::get('pedidos/pedido/', 'pedidoController@index')->name('pedidos.index'); //mostrar todos
 //-------------------------------------Insertar---------------------------------------------------
-Route::get('/pedidos/add_pedido/', 'pedidoController@create')->name('pedidos.add_pedido');
-Route::get('/add_pedido', 'pedidoController@store')->name('pedidos.store');
+Route::post('/pedidos/add_pedido/', 'pedidoController@create')->name('pedidos.add_pedido');
+Route::post('/add_pedido', 'pedidoController@store')->name('pedidos.store');
 
 
 
@@ -56,13 +55,6 @@ Route::get('descargar-evaluaciones/{academic}', 'evaluacionController@pdfp')->na
 
 Auth::routes(['register' => true]);
  
-
-
-//-------------------------------------Pedidos---------------------------------------------------
-Route::get('pedidos/pedido/', 'pedidoController@index')->name('pedidos.index'); //mostrar todos
-//-------------------------------------Insertar---------------------------------------------------
-Route::get('/pedidos/add_pedido/', 'pedidoController@create')->name('pedidos.add_pedido');
-Route::get('/add_pedido', 'pedidoController@store')->name('pedidos.store');
 
 //-------------------------------------FACULTADES---------------------------------------------------
 Route::get('/facultades/{facultad}/indiv', 'facultadController@indiv')->name('facultades.indiv');

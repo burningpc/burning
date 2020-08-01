@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class pedido extends Model
 {
-    protected $fillable = ['id_carrito','total','rut_cliente','rut_vendedor','fecha_compra','descripcion'];
+    protected $fillable = ['id_carrito','infoCarrito', 'total','rut_cliente','rut_vendedor','fecha_compra','descripcion','num_tarjeta','mes_tarjeta','ano_tarjeta','ccv_tarjeta'];
     protected $table = ('pedido');
 } 
  
