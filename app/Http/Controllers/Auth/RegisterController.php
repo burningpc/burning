@@ -75,6 +75,21 @@ class RegisterController extends Controller
             'estado'=> $data['estado'],
             'password' => Hash::make($data['password']),
         ]);
+        if ($data['typeuser'] === 'Cliente') { //Registra en tabla cliente a clientes 
+            $newcliente= new cliente;
+            $newcliente->name = $data['name'];
+            $newcliente->lastname1 = $data['lastname'];
+            $newcliente->lastname2 = 'Campo vacio';
+            $newcliente->city = 'Campo vacio';
+            $newcliente->commune = 'Campo vacio';
+            $newcliente->addres  = 'Campo vacio';
+            $newcliente->number = 0;
+            $newcliente->email = $data['email'];
+            $newcliente->dni = $data['dni'];
+            $newcliente->typeuser = "Cliente";
+        $newcliente->save();
+        }
+        
         return view('/home');     
 
         

@@ -34,6 +34,12 @@ class PedidoController extends Controller
         return view('/pedidos/pedido', compact('pedido','carrito','user','userCliente'));///!!!!!!!!!!!!!
     }
 
+    public function indiv()
+    {
+        $pedido = pedido::get();
+        return view('/pedidos/vistaindividual', compact('pedido'));///!!!!!!!!!!!!!
+    }
+
     public function create()
     {
         return view('pedidos.add_pedido');
@@ -77,7 +83,7 @@ class PedidoController extends Controller
             'infoCarrito' => $infoCarrito,
             'total'=> $total,
             'rut_cliente'=>$request->Rut1,
-            'rut_vendedor'=>"000", //cambiar por $request->ID2 (rut vendedor)
+            'rut_vendedor'=>$request->ID2, //cambiar por $request->ID2 (rut vendedor)
             'fecha_compra'=> $fecha,
             'descripcion'=> $request->observacion,
             'num_tarjeta' => $request->numcard,
@@ -85,11 +91,29 @@ class PedidoController extends Controller
             'ano_tarjeta' => $request->ano,
             'ccv_tarjeta' => $request->CCV
         ]);
+
+
+        foreach($user as $us){
+            if($us->typeuser == 'Encargado de ventas'){
+                if($us->id == $request->ID2){
+                    $us->update([
+                        'estado' => 'Activo'
+                    ]);
+                }
+                else{
+                    $us->update([
+                        'estado' => 'Inactivo'
+                    ]);
+                }
+            }
+        }
    
         # Vaciar carro cuando presiona "pagar"
         foreach($carrito as $items){
             $items->delete();
         }
+
+
  
         
         return redirect()->route('mostrar_producto');

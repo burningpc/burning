@@ -17,7 +17,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  value="{{$userCliente->name}}" readonly>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -28,10 +28,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="lastname1" class="col-md-4 col-form-label text-md-right">{{ __('Apellidos Paterno') }}</label>
+                            <label for="lastname1" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Paterno') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastname1" type="text" class="form-control @error('lastname1') is-invalid @enderror" name="lastname1"  required autocomplete="lastname1" autofocus>
+                                <input id="lastname1" type="text" class="form-control @error('lastname1') is-invalid @enderror" name="lastname1"   value="{{$userCliente->lastname1}}" readonly>
 
                                 @error('lastname1')
                                     <span class="invalid-feedback" role="alert">
@@ -109,7 +109,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email')}}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  value="{{$userCliente->email}}" readonly>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -121,7 +121,7 @@
                         <div class="form-group row">
                             <label for="dni" class="col-md-4 col-form-label text-md-right">{{ __('Rut (DNI )') }}</label>
                             <div class="col-md-6">
-                                <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
+                                <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror" name="dni"  value="{{$userCliente->dni}}" readonly>
 
                                 @error('dni')
                                     <span class="invalid-feedback" role="alert">

@@ -33,6 +33,7 @@ Route::get('carrito/eliminar/', 'carritoController@destroyAll')->name('carrito.b
 
 //-------------------------------------Pedidos---------------------------------------------------
 Route::get('pedidos/pedido/', 'pedidoController@index')->name('pedidos.index'); //mostrar todos
+Route::get('pedidos/vistaindividual/', 'pedidoController@indiv')->name('pedidos.indiv'); //mostrar pedidos individuales
 //-------------------------------------Insertar---------------------------------------------------
 Route::post('/pedidos/add_pedido/', 'pedidoController@create')->name('pedidos.add_pedido');
 Route::post('/add_pedido', 'pedidoController@store')->name('pedidos.store');

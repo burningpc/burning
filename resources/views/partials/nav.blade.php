@@ -74,17 +74,19 @@
     <li class="nav-item">
       <a class="nav-link text-light" href="{{ route('facultades.show') }}">Confirmacion de envios</a>
     </li>
-  @elseif(Auth::user()->typeuser=='Encargados de ventas')         
+  @elseif(Auth::user()->typeuser=='Encargado de ventas')         
+    
+
     <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('academics.index') }}">Equipos</a>
+      <a class="nav-link text-light"  href="{{ route('mostrar_producto') }}">Equipos</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('academics.index') }}">Reclamos</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('academics.index') }}">Confirmar stock</a>
+      <a class="nav-link text-light"  href="{{ route('pedidos.indiv') }}">Ventas</a>
     </li>
     <br/>
+    <li class="nav-item">
+      <a class="nav-link text-light" href="{{ route('facultades.show') }}">Reviews</a>
+    </li>
     <li class="nav-item">
       <a class="navbar-brand" href="{{ route('carrito.show') }}">
         <div  style="width:35px">
@@ -92,10 +94,11 @@
         </div>
       </a>
     </li>
-    <li class="nav-item">
-    <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('facultades.show') }}">Reviews</a>
-    </li>
+    
+    
+
+
+    
   @elseif(Auth::user()->typeuser=='Cliente')
   <li class="nav-item">
       <a class="nav-link text-light " href="{{ route('mostrar_producto') }}">Pc Armados</a>

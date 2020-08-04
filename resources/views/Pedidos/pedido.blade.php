@@ -7,7 +7,15 @@
 @section('content') 
     <div class="container">
         <div class="bg-white py-4 px-4 shadow-lg rounded">
-            <form  method="POST" action="{{route('pedidos.store')}}"  >
+        @if($userCliente->dni != Auth::user()->dni or $userCliente->lastname2 == 'Campo vacio')
+            <div class="row">
+                <div class="col text-center">
+                    <p>Al parecer faltan algunos campos en su registro como cliente, por favor complete estos registro y vuelva a realizar el pago<p>
+                    <a class="btn btn-danger" href="{{ route('ingresar' )}}">Editar mis datos</a>
+                </div>
+            </div>
+        @else
+        <form  method="POST" action="{{route('pedidos.store')}}"  >
                 @csrf
                 
                 <div  style="width:1050px">
@@ -44,7 +52,7 @@
                         $existe = 0;
                     @endphp
                     @forelse ($user as $userItem)
-                        @if($userItem->typeuser == 'Encargado de ventas') <!--Luego comprobar tambien por su disponibilidad-->
+                        @if($userItem->typeuser == 'Encargado de ventas' && $userItem->estado == 'Inactivo') <!--Luego comprobar tambien por su disponibilidad-->
                             <input type = "text" name="Nombre2" placeholder="Nombre" class="form-control mb-2" value="{{ $userItem->name }}" readonly="readonly">
                             <input type = "number" name="ID2" placeholder="Id" class="form-control mb-2" value="{{ $userItem->id }}" readonly="readonly"> 
                             <input type = "text" name="Mail2" placeholder="Mail" class="form-control mb-2" value="{{ $userItem->email }}" readonly="readonly">
@@ -130,4 +138,7 @@
             </form>
         </div>
     </div>
+        @endif
+
+            
 @endsection 
