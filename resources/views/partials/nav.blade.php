@@ -80,8 +80,15 @@
     <li class="nav-item">
       <a class="nav-link text-light"  href="{{ route('mostrar_producto') }}">Equipos</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link text-light"  href="{{ route('pedidos.indiv') }}">Ventas</a>
+
+    <li class="nav-item dropdown ">
+      <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+        Ventas
+      </a>
+      <div class="dropdown-menu" >
+        <a class="dropdown-item" href="{{ route('pedidos.resumen') }}">Ver Ventas</a>
+        <a class="dropdown-item " href="{{ route('pedidos.indiv') }}" >Asignar ensamblador </a>
+      </div>
     </li>
     <br/>
     <li class="nav-item">

@@ -34,6 +34,10 @@ Route::get('carrito/eliminar/', 'carritoController@destroyAll')->name('carrito.b
 //-------------------------------------Pedidos---------------------------------------------------
 Route::get('pedidos/pedido/', 'pedidoController@index')->name('pedidos.index'); //mostrar todos
 Route::get('pedidos/vistaindividual/', 'pedidoController@indiv')->name('pedidos.indiv'); //mostrar pedidos individuales
+Route::get('pedidos/resumen/', 'pedidoController@resumen')->name('pedidos.resumen'); //mostrar pedidos individuales
+//-----------------------------Actualizar------------------------------------------------------------
+Route::get('pedidos/resumen/{id}', 'pedidoController@edit')->name('pedidos.editar'); //mostrar pedidos individuales
+Route::post('pedidos/resumen/{id}', 'pedidoController@update')->name('pedidos.update'); //asigna ensamblador asignado
 //-------------------------------------Insertar---------------------------------------------------
 Route::post('/pedidos/add_pedido/', 'pedidoController@create')->name('pedidos.add_pedido');
 Route::post('/add_pedido', 'pedidoController@store')->name('pedidos.store');

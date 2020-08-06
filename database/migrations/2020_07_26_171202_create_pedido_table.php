@@ -20,6 +20,7 @@ class CreatePedidoTable extends Migration
             $table->bigInteger('total');
             $table->string('rut_cliente');
             $table->string('rut_vendedor');
+            $table->string('rut_ensamblador');
             $table->date('fecha_compra');
             $table->string('descripcion');
             $table->bigInteger('num_tarjeta');

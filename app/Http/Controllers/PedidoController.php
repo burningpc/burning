@@ -37,7 +37,8 @@ class PedidoController extends Controller
     public function indiv()
     {
         $pedido = pedido::get();
-        return view('/pedidos/vistaindividual', compact('pedido'));///!!!!!!!!!!!!!
+        $user = user::get();
+        return view('/pedidos/vistaindividual', compact('pedido','user'));///!!!!!!!!!!!!!
     }
 
     public function create()
@@ -84,6 +85,7 @@ class PedidoController extends Controller
             'total'=> $total,
             'rut_cliente'=>$request->Rut1,
             'rut_vendedor'=>$request->ID2, //cambiar por $request->ID2 (rut vendedor)
+            'rut_ensamblador' => 'por definir',
             'fecha_compra'=> $fecha,
             'descripcion'=> $request->observacion,
             'num_tarjeta' => $request->numcard,
@@ -118,4 +120,22 @@ class PedidoController extends Controller
         
         return redirect()->route('mostrar_producto');
     }
+
+
+    public function update($id, Request $request)
+    {
+        $pedido = pedido::findOrFail($id);
+        $pedido->update([
+            'rut_ensamblador' => $request->Rut3,
+        ]);
+        return redirect()->route('pedidos.resumen');
+    }
+
+    public function resumen()
+    {
+        $pedido = pedido::get();
+        $user = user::get();
+        return view('/pedidos/resumen', compact('pedido','user'));///!!!!!!!!!!!!!
+    }
+
 }
