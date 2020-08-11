@@ -41,7 +41,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('facultades.show') }}">Reviews</a>
+      <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Reviews</a>
     </li>
     <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle " id="navbardrop" data-toggle="dropdown" >Usuarios</a>         
@@ -66,13 +66,13 @@
     </li>
   @elseif(Auth::user()->typeuser=='Ensamblador')
       <li class="nav-item">
-        <a class="nav-link text-light" href="{{ route('academics.index') }}">Equipos</a>
+        <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Equipos</a>
       </li>
       <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('facultades.show') }}">Reviews</a>
+      <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Reviews</a><!-- hay que hacer el propioo-->
     </li>
     <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('facultades.show') }}">Confirmacion de envios</a>
+      <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Confirmacion de envios</a>
     </li>
   @elseif(Auth::user()->typeuser=='Encargado de ventas')         
     
@@ -92,7 +92,7 @@
     </li>
     <br/>
     <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('facultades.show') }}">Reviews</a>
+      <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Reviews</a>
     </li>
     <li class="nav-item">
       <a class="navbar-brand" href="{{ route('carrito.show') }}">
@@ -132,13 +132,25 @@
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
                 {{ Auth::user()->name}}
               </a>
+              @if(Auth::user()->typeuser=="Cliente")
               <div class="dropdown-menu" >
-                <a class="dropdown-item " href="{{ route('ingresar' )}}">Editar</a>
+                <a class="dropdown-item " href="{{ route('edit',Auth::user())}}"> Editar Datos de la cuenta</a>
+                <a class="dropdown-item " href="{{ route('ingresar' )}}">Editar Datos de envio</a>
                 <a class="dropdown-item " href="#" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                     Cerrar sesión 
                 </a> 
-                
+               </div>
+               @else
+               <div class="dropdown-menu" >
+                <a class="dropdown-item " href="{{ route('edit',Auth::user())}}"> Editar Datos de la cuenta</a>
+                <a class="dropdown-item " href="#" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    Cerrar sesión 
+                </a> 
+               </div>
+               @endif
+               
             </li>
 
   </ul>

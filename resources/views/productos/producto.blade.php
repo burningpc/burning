@@ -45,6 +45,8 @@
                         @auth
                             @if($item->Cantidad > 0)
                             <a href="{{route('carrito.agregar', $item)}}" class="btn btn-primary ">Agregar al carrito</a>
+                            {{--<a href="{{route('ingresar_review', $item)}}" class="btn btn-secondary ">Agregar review</a>--}}
+                            <a href="{{route('mostrar_review', $item)}}" class="btn btn-warning ">Ver reviews</a>
                             @else
                             <a href="" class="btn btn-primary ">Stock Insuficiente</a>
                             @endif

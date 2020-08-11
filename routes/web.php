@@ -13,15 +13,10 @@ route::get('/contact/mostrar','MessageController@mostrar')->name('message.mostra
 
 //-------------------------------------PRODUCTOS---------------------------------------------------
 Route::get('productos/producto', 'ProductoController@index')->name('mostrar_producto');
-
 Route::get('productos/ingresar', 'ProductoController@create')->name('ingresar_producto');
-
 Route::post('productos/ingresar', 'ProductoController@store')->name('crear_producto');
-
 Route::get('productos/editar/{id}', 'ProductoController@edit')->name('editar_producto');
-
 Route::put('productos/editar/{id}', 'ProductoController@update')->name('producto_update');
-
 Route::delete('productos/eliminar/{id}', 'ProductoController@destroy')->name('eliminar_producto');
 
 //-------------------------------------Carrito--------------------------------------------------- 
@@ -42,7 +37,10 @@ Route::post('pedidos/resumen/{id}', 'pedidoController@update')->name('pedidos.up
 Route::post('/pedidos/add_pedido/', 'pedidoController@create')->name('pedidos.add_pedido');
 Route::post('/add_pedido', 'pedidoController@store')->name('pedidos.store');
 
-
+//-------------------------------------Reviews---------------------------------------------------
+Route::get('reviews/review/{id}', 'ReviewController@index')->name('mostrar_review');
+Route::get('reviews/ingresar/{id}', 'ReviewController@create')->name('ingresar_review');
+Route::post('reviews/ingresar', 'ReviewController@store')->name('crear_review');
 
 Route::get('usuarios/{id}/eliminar', [
     'uses' => 'Auth\RegisterController@eliminar',
@@ -60,21 +58,3 @@ Route::get('descargar-evaluaciones/{academic}', 'evaluacionController@pdfp')->na
 
 Auth::routes(['register' => true]);
  
-
-//-------------------------------------FACULTADES---------------------------------------------------
-Route::get('/facultades/{facultad}/indiv', 'facultadController@indiv')->name('facultades.indiv');
-//-----------------------------Insertar------------------------------------------------------------
-Route::get('/facultades/add_facultad', 'facultadController@create')->name('facultades.add_facultad');
-Route::POST('/add_facultad', 'facultadController@store')->name('facultad.store');
-Route::get('/facultades/temporal', 'facultadController@temp')->name('facultades.temporal');
-//-----------------------------Mostrar------------------------------------------------------------
-Route::get('/facultades/show', 'facultadController@index')->name('facultades.show');
-Route::get('/facultades/fuente', 'facultadController@show')->name('facultades.fuente');
-//-----------------------------Actualizar------------------------------------------------------------
-Route::get('/facultades/{facultad}/editar', 'facultadController@edit')->name('facultades.edit');
-Route::patch('/facultades/{facultad}', 'facultadController@update')->name('facultades.update');
-//-----------------------------Eliminar-------------------------------------------------------------
-Route::delete('/facultades/{facultad}', 'facultadController@destroy')->name('facultades.destroy');
-Route::patch('/facultades/{usuario}/usermod', 'facultadController@usermod')->name('facultades.usermod');
-//--------------------------------------------------------------------------------------------------
-
