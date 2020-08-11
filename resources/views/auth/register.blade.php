@@ -71,13 +71,14 @@
                             <label for="typeuser" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de usuario') }}</label>
                             <div  class="col-md-6">
                             <select id="typeuser" type="typeuser" class="form-control @error('typeuser') is-invalid @enderror" name="typeuser" value="{{ old('typeuser') }}" required autocomplete="typeuser">
-                                <option> Cliente </option>
-
-                                <option> Administrador</option>
-                                <option> Encargado de ventas </option>
-                                <option> Encargado de inventario </option>
-                                <option> Ensamblador</option>
-
+                                @if(Auth::user() != null)
+                                    <option> Administrador</option>
+                                    <option> Encargado de ventas </option>
+                                    <option> Encargado de inventario </option>
+                                    <option> Ensamblador</option>
+                                @else
+                                    <option> Cliente </option>
+                                @endif
                             </select>
                             </div>
                             @error('typeuser')
@@ -87,12 +88,15 @@
                             @enderror
 
                         </div>
-
+                        @auth
                         <div class="form-group row">
                             <label for="estado" class="col-md-4 col-form-label text-md-right">{{ __('Estado') }}</label>
 
                             <div class="col-md-6">
-                                <input id="estado" type="estado" class="form-control @error('estado') is-invalid @enderror" name="estado" required autocomplete="estado">
+                                <select id="estado" type="estado" class="form-control @error('estado') is-invalid @enderror" name="estado" value="{{ old('estado') }}" required autocomplete="estado">
+                                        <option> Inactivo</option>
+                                        <option> Activo </option>
+                                </select>
 
                                 @error('estado')
                                     <span class="invalid-feedback" role="alert">
@@ -101,7 +105,7 @@
                                 @enderror
                             </div>
                         </div>
-                        
+                        @endauth
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

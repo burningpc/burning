@@ -40,9 +40,6 @@
       </div>
     </li>
 
-    <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Reviews</a>
-    </li>
     <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle " id="navbardrop" data-toggle="dropdown" >Usuarios</a>         
             <div class="dropdown-menu">
@@ -57,22 +54,15 @@
                 </form>
             </div>
             </li>
-    <li class="nav-item">
-      <a class="navbar-brand" href="{{ route('carrito.show') }}">
-        <div  style="width:35px">
-          <img src="{{asset('canasta.png')}}" class="img-fluid" alt="Responsive image">
-        </div>
-      </a>
-    </li>
+
+ 
   @elseif(Auth::user()->typeuser=='Ensamblador')
       <li class="nav-item">
         <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Equipos</a>
       </li>
-      <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Reviews</a><!-- hay que hacer el propioo-->
-    </li>
+
     <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Confirmacion de envios</a>
+      <a class="nav-link text-light" href="{{ route('mostrar_pedidos') }}">Confirmacion de envios</a>
     </li>
   @elseif(Auth::user()->typeuser=='Encargado de ventas')         
     
@@ -91,16 +81,8 @@
       </div>
     </li>
     <br/>
-    <li class="nav-item">
-      <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Reviews</a>
-    </li>
-    <li class="nav-item">
-      <a class="navbar-brand" href="{{ route('carrito.show') }}">
-        <div  style="width:35px">
-          <img src="{{asset('canasta.png')}}" class="img-fluid" alt="Responsive image">
-        </div>
-      </a>
-    </li>
+   
+ 
     
     
 
@@ -112,6 +94,9 @@
     </li>
     <li class="nav-item pull-right">
       <a class="nav-link text-light" href="{{ route('mostrar_producto') }}">Ver Productos</a>
+    </li>
+    <li class="nav-item pull-right">
+      <a class="nav-link text-light" href="{{ route('cliente.compras') }}">Ver Compras</a>
     </li>
     <li class="nav-item pull-right">
       <a class="nav-link text-light" href="{{ route('contact') }}">Dudas y/o Reclamos</a>
@@ -158,6 +143,7 @@
 
 <!-- VISTA PARA CUANDO NO SE ESTE LOGEADO -->
 @else
+
     <li class="nav-item">
       <a class="nav-link text-light " href="{{ route('mostrar_producto') }}">Pc Armados</a>
     </li>

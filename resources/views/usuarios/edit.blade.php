@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('lastName') }}</label>
+                            <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
                             <div class="col-md-6">
                                 <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ $usuario->lastname }}" required autocomplete="lastname" autofocus>
 

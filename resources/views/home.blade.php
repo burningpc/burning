@@ -15,21 +15,21 @@
     <div class="carousel-item active">
       <img src="bannerb.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <p class="text-body">Entorno digital para tener registro de evaluaciones docentes.</p>
+        <p class="text-body"></p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="bannerA.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Ranking de evaluaciones</h5>
-        <p>Sistema de posicionamiento de docentes mejor evaluados</p>
+        <h5>Ranking de Pc gamers</h5>
+        <p>Sistema de posicionamiento de Pcs mejor evaluados</p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="banner.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Sistema de facil uso</h5>
-        <p>Calificaciones de manera ordenada en conjunto con una interfaz intuitiva, producen un rapido acceso y evaluacionde  los datos</p>
+        <p></p>
       </div>
     </div>
   </div>

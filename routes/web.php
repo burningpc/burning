@@ -19,6 +19,19 @@ Route::get('productos/editar/{id}', 'ProductoController@edit')->name('editar_pro
 Route::put('productos/editar/{id}', 'ProductoController@update')->name('producto_update');
 Route::delete('productos/eliminar/{id}', 'ProductoController@destroy')->name('eliminar_producto');
 
+//-------------------------------------ENVIOS---------------------------------------------------
+Route::get('ensamblador/envios', 'EnviosController@index')->name('mostrar_pedidos');
+
+Route::get('ensamblador/ingresarEnvio/{id}', 'EnviosController@create')->name('ingresar_envio');
+
+Route::post('ensamblador/ingresarEnvio', 'EnviosController@store')->name('crear_envio');
+
+Route::get('ensamblador/editar/{id}', 'EnviosController@edit')->name('editar_envio');
+
+Route::put('ensamblador/editar/{id}', 'EnviosController@update')->name('envio_update');
+
+Route::delete('ensamblador/eliminar/{id}', 'EnviosController@destroy')->name('eliminar_envio');
+
 //-------------------------------------Carrito--------------------------------------------------- 
 Route::get('carrito/agregado/{id}', 'carritoController@añadir')->name('carrito.agregar');
 Route::get('carrito/show', 'carritoController@show')->name('carrito.show');
@@ -36,6 +49,9 @@ Route::post('pedidos/resumen/{id}', 'pedidoController@update')->name('pedidos.up
 //-------------------------------------Insertar---------------------------------------------------
 Route::post('/pedidos/add_pedido/', 'pedidoController@create')->name('pedidos.add_pedido');
 Route::post('/add_pedido', 'pedidoController@store')->name('pedidos.store');
+
+Route::get('usuarios/compras/', 'pedidoController@compras')->name('cliente.compras');//vista de cliente a sus compras
+
 
 //-------------------------------------Reviews---------------------------------------------------
 Route::get('reviews/review/{id}', 'ReviewController@index')->name('mostrar_review');

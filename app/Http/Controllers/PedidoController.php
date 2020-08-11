@@ -41,6 +41,13 @@ class PedidoController extends Controller
         return view('/pedidos/vistaindividual', compact('pedido','user'));///!!!!!!!!!!!!!
     }
 
+    public function Compras()
+    {
+        $pedido = pedido::get();
+        $user = user::get();
+        return view('/usuarios/compras', compact('pedido','user'));///!!!!!!!!!!!!!
+    }
+
     public function create()
     {
         return view('pedidos.add_pedido');

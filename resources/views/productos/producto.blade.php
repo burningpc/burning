@@ -44,7 +44,9 @@
  
                         @auth
                             @if($item->Cantidad > 0)
-                            <a href="{{route('carrito.agregar', $item)}}" class="btn btn-primary ">Agregar al carrito</a>
+                                @if(Auth::user()->typeuser == 'Cliente')
+                                    <a href="{{route('carrito.agregar', $item)}}" class="btn btn-primary ">Agregar al carrito</a>
+                                @endif
                             {{--<a href="{{route('ingresar_review', $item)}}" class="btn btn-secondary ">Agregar review</a>--}}
                             <a href="{{route('mostrar_review', $item)}}" class="btn btn-warning ">Ver reviews</a>
                             @else
