@@ -149,18 +149,17 @@
               <h6 class="mb-0 text-light">Conectate con nosotros en nuestras redes sociales!</h6>
             </div>
             <!-- Grid column -->
-            <a href="https://www.facebook.com/ucatolicadelmaule/" class="fab fa-facebook  btn-sm "   alt="Cinque Terre"></a>
-            <a href="https://twitter.com/ucatolicamaule" class="fab fa-twitter btn-sm" alt="Cinque Terre"></a>
-            <a href="https://www.linkedin.com/edu/universidad-cat%C3%B3lica-del-maule-10952" class="fab fa-linkedin btn-sm"   alt="Cinque Terre"></a>
-            <a href="https://www.youtube.com/channel/UCI6mMQ5izHQa9MvWUAUV_Eg" class="fab fa-youtube btn-sm"   alt="Cinque Terre"></a>
-            <a href="https://www.instagram.com/ucatolicamaule/" class="fab fa-instagram btn-sm"   alt="Cinque Terre"></a>
+            <a href="https://www.facebook.com" class="fab fa-facebook  btn-sm "   alt="Cinque Terre"></a>
+            <a href="https://twitter.com/?lang=es"fab fa-twitter btn-sm" alt="Cinque Terre"></a>
+            <a href="https://www.youtube.com" class="fab fa-youtube btn-sm"   alt="Cinque Terre"></a>
+            <a href="instagram.com" class="fab fa-instagram btn-sm"   alt="Cinque Terre"></a>
             <!-- Grid column -->
           </div>
           <!-- Grid row-->
         </div>
       </div>
       
-      {{ config('app.name') }} | Copyright @ {{ date('Y') }}    
+      PC Burning | Copyright @ {{ date('Y') }}    
     </footer>
 </body>
 </html>
