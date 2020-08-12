@@ -149,10 +149,10 @@
               <h6 class="mb-0 text-light">Conectate con nosotros en nuestras redes sociales!</h6>
             </div>
             <!-- Grid column -->
-            <a href="https://www.facebook.com" class="fab fa-facebook  btn-sm "   alt="Cinque Terre"></a>
-            <a href="https://twitter.com/?lang=es"fab fa-twitter btn-sm" alt="Cinque Terre"></a>
+            <a href="https://www.facebook.com/" class="fab fa-facebook  btn-sm "   alt="Cinque Terre"></a>
+            <a href="https://twitter.com/" class="fab fa-twitter btn-sm" alt="Cinque Terre"></a>
             <a href="https://www.youtube.com" class="fab fa-youtube btn-sm"   alt="Cinque Terre"></a>
-            <a href="instagram.com" class="fab fa-instagram btn-sm"   alt="Cinque Terre"></a>
+            <a href="https://www.instagram.com" class="fab fa-instagram btn-sm"   alt="Cinque Terre"></a>
             <!-- Grid column -->
           </div>
           <!-- Grid row-->
