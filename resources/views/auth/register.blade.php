@@ -66,7 +66,7 @@
                             </div>
                         </div>
 
-                        
+   
                         <div class="form-group row">
                             <label for="typeuser" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de usuario') }}</label>
                             <div  class="col-md-6">
@@ -88,18 +88,19 @@
                             @enderror
 
                         </div>
-                        @auth
+
+                       
                         <div class="form-group row">
                             <label for="estado" class="col-md-4 col-form-label text-md-right">{{ __('Estado') }}</label>
 
                             <div class="col-md-6">
                                 <select id="estado" type="estado" class="form-control @error('estado') is-invalid @enderror" name="estado" value="{{ old('estado') }}" required autocomplete="estado">
-                                @if(Auth::user() != null)
-                                            <option> Inactivo</option>
-                                            <option> Activo </option>
-                                        @else    
-                                            <option> Activo </option>
-                                        @endif
+                                    @if(Auth::user() != null)
+                                        <option> Inactivo</option>
+                                        <option> Activo </option>
+                                    @else    
+                                        <option> Activo </option>
+                                    @endif
                                 </select>
 
                                 @error('estado')
@@ -109,7 +110,7 @@
                                 @enderror
                             </div>
                         </div>
-                        @endauth
+                
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -137,7 +138,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('registrar') }}
+                                    {{ __('Registrar') }}
                                 
                                 </button>
                                

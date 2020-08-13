@@ -9,7 +9,7 @@ use App\Cliente;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Auth;
 class RegisterController extends Controller
 {
     /*
@@ -66,6 +66,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+        
         User::create([
             'name' => $data['name'],
             'lastname' => $data['lastname'],
@@ -103,34 +105,80 @@ class RegisterController extends Controller
     }
 
     public function edit(User $usuario)
-    {
-        return view('usuarios.edit',[ 
-            'usuario' =>  $usuario
-        ]);
+    {   
+        if (auth::user()->typeuser == "Administrador"){
+            return view('usuarios.edit',[ 
+                'usuario' =>  $usuario
+            ]);
+        }
+        else{
+            return view('usuarios.editsc',[ 
+                'usuario' =>  $usuario
+            ]);
+        }
+        
     }
 
     public function update(user $usuarios)
     {   
+        if (auth::user()->typeuser == "Administrador"){
+            $usuarios->update([
+                'name' => request('name'),
+                'lastname' => request('lastname'),
+                'email' => request('email'),
+                'dni' => request('dni'),
+                'password' => Hash::make(request('password')),
+            ]);
+    
+            return view('/home');
+        }
+        else{
+            $usuarios->update([
+                'name' => request('name'),
+                'lastname' => request('lastname'),
+                'email' => request('email'),
+                'dni' => request('dni'),
+            ]);
+    
+            return view('/home');
+    }
+
+
+    }    
+
+    public function update2(User $usuarios)
+    {
         $usuarios->update([
             'name' => request('name'),
             'lastname' => request('lastname'),
             'email' => request('email'),
             'dni' => request('dni'),
-            'password' => Hash::make(request('password')),
         ]);
 
         return view('/home');
-
     }
+
 
     public function eliminar($id)
     {   
+        
         $usuaris = User::find($id);
         $usuaris->delete();
         
         $usuarios = user::get();
 
         return view('usuarios.show',compact('usuarios'));
+
+    }    
+    public function eliminarc($id)
+    {   
+        
+        $usuaris = User::find($id);
+        $usuaris->delete();
+        
+        $usuarios = user::get();
+
+        return view('/home');
 
     }
 

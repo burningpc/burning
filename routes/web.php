@@ -62,15 +62,28 @@ Route::get('usuarios/{id}/eliminar', [
     'uses' => 'Auth\RegisterController@eliminar',
     'as' => 'eliminar'
     ]);
+Route::get('usuarios/{id}/eliminar1', [
+    'uses' => 'Auth\RegisterController@eliminarc',
+    'as' => 'eliminarc'
+    ]);
+Route::get('usuarios/editsc/{id}', [
+    'uses' => 'Auth\RegisterController@editsc',
+    'as' => 'editsc'
+    ]); 
+Route::patch('usuarios/editsc/{id}', [
+    'uses' => 'Auth\RegisterController@update2',
+    'as' => 'update2'
+    ]);
 
 Route::get('usuarios/editcliente','ClienteController@create')->name('ingresar');    
 Route::post('usuarios/editcliente','ClienteController@Añadir')->name('ingresardatos');
-
+/*
 Route::get('/evaluacion2', 'evaluacionController@vertodo')->name('evaluacion');
 Route::get('descargar-evaluaciones', 'evaluacionController@pdf')->name('evaluaciones.pdf');
 
 Route::get('/evaluacionp/{academic}', 'evaluacionController@vertodop')->name('evaluacionp');
 Route::get('descargar-evaluaciones/{academic}', 'evaluacionController@pdfp')->name('evaluacionesp.pdf');
 
+*/
 Auth::routes(['register' => true]);
  

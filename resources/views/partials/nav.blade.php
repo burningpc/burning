@@ -117,24 +117,20 @@
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
                 {{ Auth::user()->name}}
               </a>
-              @if(Auth::user()->typeuser=="Cliente")
+             
               <div class="dropdown-menu" >
                 <a class="dropdown-item " href="{{ route('edit',Auth::user())}}"> Editar Datos de la cuenta</a>
+                @if(Auth::user()->typeuser=="Cliente")
                 <a class="dropdown-item " href="{{ route('ingresar' )}}">Editar Datos de envio</a>
+                <a class="dropdown-item " href="{{ route('eliminarc', Auth::user()->id)}}">Eliminar cuenta </a>
+
+                @endif
                 <a class="dropdown-item " href="#" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                     Cerrar sesión 
                 </a> 
                </div>
-               @else
-               <div class="dropdown-menu" >
-                <a class="dropdown-item " href="{{ route('edit',Auth::user())}}"> Editar Datos de la cuenta</a>
-                <a class="dropdown-item " href="#" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    Cerrar sesión 
-                </a> 
-               </div>
-               @endif
+
                
             </li>
 
