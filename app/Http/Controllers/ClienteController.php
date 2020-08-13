@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\cliente;
+use App\carrito;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -56,6 +57,7 @@ class ClienteController extends Controller
             $newcliente->dni = $request->dni;
             $newcliente->typeuser = "Cliente";
             $newcliente->save();
+            return view('/home');  
         }
         else{
             $registrado ->update([
@@ -65,9 +67,11 @@ class ClienteController extends Controller
                 'addres'  => request('addres'),
                 'number' => request('number')
             ]);
+            $carrito = carrito::get(); 
+            return view('carrito.show', compact('carrito'));
         }
 
-        return view('/home');     
+           
 
         
     }

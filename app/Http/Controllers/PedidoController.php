@@ -125,7 +125,7 @@ class PedidoController extends Controller
 
  
         
-        return redirect()->route('mostrar_producto');
+        return redirect()->route('pedidos.comprobante');
     }
 
 
@@ -143,6 +143,32 @@ class PedidoController extends Controller
         $pedido = pedido::get();
         $user = user::get();
         return view('/pedidos/resumen', compact('pedido','user'));///!!!!!!!!!!!!!
+    }
+
+    public function comprobante()
+    {
+        $pedido = pedido::get();
+        $user = user::get();
+        return view('/pedidos/comprobante', compact('pedido','user'));///!!!!!!!!!!!!!
+    }
+
+    public function pdf()
+    {    
+        $pedido = pedido::get();
+        $user = user::get();
+        $envio = cliente::where('dni','=',auth::user()->dni)->get();
+
+        $pdf = \PDF::loadView('pdf.boleta', compact('user','pedido','envio'));
+
+        return $pdf->download('Boleta_compra.pdf');
+    }
+
+    public function vertodo()
+    {
+        $pedido = pedido::get();
+        $user = user::get();
+        $envio = cliente::where('dni','=',auth::user()->dni)->get();
+        return view('boleta',compact('user','pedido','envio'));
     }
 
 }

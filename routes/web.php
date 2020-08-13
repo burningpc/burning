@@ -50,8 +50,13 @@ Route::post('pedidos/resumen/{id}', 'pedidoController@update')->name('pedidos.up
 Route::post('/pedidos/add_pedido/', 'pedidoController@create')->name('pedidos.add_pedido');
 Route::post('/add_pedido', 'pedidoController@store')->name('pedidos.store');
 
+Route::get('pedidos/comprobante/', 'pedidoController@comprobante')->name('pedidos.comprobante'); //mostrar pedidos individuales
+
 Route::get('usuarios/compras/', 'pedidoController@compras')->name('cliente.compras');//vista de cliente a sus compras
 
+
+Route::get('/evaluacion2', 'pedidoController@vertodo')->name('boleta');
+Route::get('descargar-boleta', 'pedidoController@pdf')->name('boleta.pdf');
 
 //-------------------------------------Reviews---------------------------------------------------
 Route::get('reviews/review/{id}', 'ReviewController@index')->name('mostrar_review');
