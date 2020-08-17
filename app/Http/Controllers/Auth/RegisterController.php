@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
-use App\Cliente;
+use App\cliente;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -175,6 +175,9 @@ class RegisterController extends Controller
         
         $usuaris = User::find($id);
         $usuaris->delete();
+
+        //$cliente = cliente::find($id);
+        //$cliente->delete();
         
         $usuarios = user::get();
 

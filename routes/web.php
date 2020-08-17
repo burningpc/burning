@@ -32,9 +32,13 @@ Route::put('ensamblador/editar/{id}', 'EnviosController@update')->name('envio_up
 
 Route::delete('ensamblador/eliminar/{id}', 'EnviosController@destroy')->name('eliminar_envio');
 
+Route::get('ensamblador/eliminar/{id}', 'EnviosController@destroyDate')->name('eliminar_fecha_envio');
+
+
+
 //-------------------------------------Carrito--------------------------------------------------- 
 Route::get('carrito/agregado/{id}', 'carritoController@añadir')->name('carrito.agregar');
-Route::get('carrito/show', 'carritoController@show')->name('carrito.show');
+Route::get('carrito/show', 'carritoController@show')->name('carrito.show'); 
 Route::get('carrito/eliminar/{id}', 'carritoController@destroy')->name('carrito.borrar');
 Route::get('carrito/eliminar/', 'carritoController@destroyAll')->name('carrito.borrarTodo');
 
@@ -62,7 +66,12 @@ Route::get('descargar-boleta', 'pedidoController@pdf')->name('boleta.pdf');
 Route::get('reviews/review/{id}', 'ReviewController@index')->name('mostrar_review');
 Route::get('reviews/ingresar/{id}', 'ReviewController@create')->name('ingresar_review');
 Route::post('reviews/ingresar', 'ReviewController@store')->name('crear_review');
+Route::get('reviews/editar/{id}', 'ReviewController@edit')->name('editar_review');
+Route::put('reviews/editar/{id}', 'ReviewController@update')->name('review_update');
+Route::delete('reviews/eliminar/{id}', 'ReviewController@destroy')->name('eliminar_review');
 
+
+//------------------------------------Usuario--------------------------------------------------
 Route::get('usuarios/{id}/eliminar', [
     'uses' => 'Auth\RegisterController@eliminar',
     'as' => 'eliminar'
@@ -82,6 +91,9 @@ Route::patch('usuarios/editsc/{id}', [
 
 Route::get('usuarios/editcliente','ClienteController@create')->name('ingresar');    
 Route::post('usuarios/editcliente','ClienteController@Añadir')->name('ingresardatos');
+Route::post('contact', 'ClienteController@Reclamos')->name('reclamos_agregar');
+
+Route::get('reclamos','ClienteController@showReclamos')->name('mostrar_reclamos');    
 /*
 Route::get('/evaluacion2', 'evaluacionController@vertodo')->name('evaluacion');
 Route::get('descargar-evaluaciones', 'evaluacionController@pdf')->name('evaluaciones.pdf');

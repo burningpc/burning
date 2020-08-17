@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\cliente;
+use App\Reclamo;
 use App\carrito;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,6 +75,26 @@ class ClienteController extends Controller
            
 
         
+    }
+    public function Reclamos(Request $request)
+    {
+ 
+        $reclamo = new Reclamo;
+        $reclamo->nombre = $request->name;
+        $reclamo->email = $request->email;
+        $reclamo->asunto = $request->subject;
+        $reclamo->msj = $request->content;
+
+        $reclamo->save();
+
+        return back()->with('mensaje', 'Reclamo enviado!'); 
+
+    }
+
+    public function showReclamos()
+    {
+        $reclamos = Reclamo::get();
+        return view('reclamos', compact('reclamos'));
     }
 
 }

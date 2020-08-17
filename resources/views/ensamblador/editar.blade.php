@@ -26,10 +26,10 @@
             
             @include('partials.validation-errors')
             
-            <input type = "text" name="rut_ensamblador" placeholder="Rut ensamblador" class="form-control mb-2" value="{{$envio->rut_ensamblador}}">
-            <input type = "text" name="rut_cliente" placeholder="Rut cliente" class="form-control mb-2" value="{{$envio->rut_cliente}}">
-            <input type = "text" name="id_compra" placeholder="Id compra" class="form-control mb-2" value="{{$envio->id_compra}}">
-            <input type = "date" name="fecha_entrega" placeholder="Fecha a entregar" class="form-control mb-2" value="{{$envio->fecha_entrega}}">
+            Mi Rut: <input type = "text" name="rut_ensamblador" placeholder="Rut ensamblador" class="form-control mb-2" value="{{$envio->rut_ensamblador}}" readonly="readonly">
+            Rut Cliente: <input type = "text" name="rut_cliente" placeholder="Rut cliente" class="form-control mb-2" value="{{$envio->rut_cliente}}" readonly="readonly">
+            Id Compra: <input type = "text" name="id_compra" placeholder="Id compra" class="form-control mb-2" value="{{$envio->id_compra}}" readonly="readonly">
+            Fecha entrega: <input type = "date" name="fecha_entrega" placeholder="Fecha a entregar" class="form-control mb-2" value="{{$envio->fecha_entrega}}">
             
 
             <button class="btn btn-warning btn-lg btn-block" type="submit">Editar producto</button>

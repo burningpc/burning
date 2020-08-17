@@ -48,7 +48,7 @@
 
                 <label for="Imagen">{{''}}</label>
                 <img src="{{asset('storage').'/'.($producto->Imagen)}}" >
-                <input type = "file" name="Imagen" class="form-control mb-2" value="">
+                <input type = "file" name="Imagen" class="form-control mb-2" value="{{$producto->Imagen}}">
 
            
 

@@ -28,9 +28,7 @@
                     
                         <tr>
                         <td>{{$pedidoItem->id}}</td>
-                        <td>
-                            {{$pedidoItem->infoCarrito}}
-                        </td>
+                        <td>{{$pedidoItem->infoCarrito}}</td>
                         <td>{{$pedidoItem->total}}</td>
                         <td>{{$pedidoItem->rut_cliente}}</td>
                         <td>{{$pedidoItem->fecha_compra}}</td>

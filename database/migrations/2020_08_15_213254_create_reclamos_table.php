@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReviewsTable extends Migration
+class CreateReclamosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('reclamos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_producto');
-            $table->bigInteger('id_cliente');
-            $table->string('nombre_cliente');
-            $table->string('review');
-            $table->string('nota');
-            $table->timestamps();    
+            $table->string('nombre');
+            $table->string('email');
+            $table->string('asunto');
+            $table->string('msj');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +30,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('reclamos');
     }
 }

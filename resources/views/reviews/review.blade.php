@@ -35,6 +35,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Review</th>
                     <th scope="col">Nota</th>
+                    <th scope="col"> </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,7 +46,19 @@
                             <th>{{$review->nombre_cliente}}</th>
                             <td>{{$review->review}}</td>
                             <td>{{$review->nota}}</td>
-                        </tr>   
+                            <td>
+                                
+                                @if(Auth::user()->id == $review->id_cliente)
+                                <a href="{{route('editar_review', $review)}}" class="btn btn-info btn-sm">Editar review</a>
+                                <form action="{{route('eliminar_review', $review)}}" method="POST" class="d-inline">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('¿Borrar review?') ">Eliminar review</button>
+                                </form>     
+                                @endif
+                                
+                            </td>    
+                            </tr>   
                     @endif
                 @endforeach
                 @endisset

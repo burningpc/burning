@@ -38,15 +38,15 @@
                     <td><span class="badge badge-primary badge-pill">{{ $usuario->email }}</span></td>
                     <td>{{ $usuario->typeuser }}</td>
                     <td>{{ $usuario->estado }}</td>
-                    <td>
+                    <td align="center">
 
                         <div class="btn-group btn-group-y6">
                             <a class="btn btn-primary" href="{{ route('edit', $usuario)}}">Editar </a>
-                            @if( Auth::user()->email == $usuario->email)
-                            <a class="btn btn-danger" href="#">Eliminar </a>
-                            @else(Auth::user()->email =! $usuario->email)
-                            <a class="btn btn-danger" href="{{ route('eliminar', $usuario->id)}}">Eliminar </a>
+                            @if( Auth::user()->email != $usuario->email)
+                            <a href="{{ route('eliminar', $usuario->id)}}" class="btn btn-danger" onclick="return confirm('Estas seguro de eliminar este usuario?');">Borrar</a>
+                            <!--<a class="btn btn-danger" href="{{ route('eliminar', $usuario->id)}}">Eliminar </a>-->
                             @endif()
+                            
                         </div>
 
                     </td>

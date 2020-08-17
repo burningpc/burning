@@ -7,7 +7,7 @@
 @section('content') 
     <div class="container">
         <div class="page-header">
-            <h1>Pedidos registrados del vendedor </h1>
+            <h1>Pedidos sin ensamblador asignado</h1>
         </div>
         <table class="table">
             <thead class="thead-dark">

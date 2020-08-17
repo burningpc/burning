@@ -22,6 +22,7 @@ class CreatePedidoTable extends Migration
             $table->string('rut_vendedor');
             $table->string('rut_ensamblador');
             $table->date('fecha_compra');
+            $table->date('fecha_envio');
             $table->string('descripcion');
             $table->bigInteger('num_tarjeta');
             $table->bigInteger('mes_tarjeta');

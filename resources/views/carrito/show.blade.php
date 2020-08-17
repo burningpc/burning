@@ -35,29 +35,38 @@
         @forelse ($carrito as $carritoItem) 
         <tr> 
             <td>{{ $carritoItem->nombre_producto }}</td> 
-            <td><span class="badge badge-primary badge-pill">{{ $carritoItem->cantidad_producto }}</span></td>
+            <td align="center">
+            <a href="{{route('carrito.borrar',$carritoItem)}}" class="btn btn-primary "><</a>
+            <span class="btn btn-primary">{{ $carritoItem->cantidad_producto }}</span>
+            <a href="{{route('carrito.agregar', $carritoItem)}}" class="btn btn-primary ">></a>
+            
+            </td>
             <td>{{ $carritoItem->precio_producto }}</td>
-            <td align="center"><a class="btn btn-danger" href="{{route('carrito.borrar', $carritoItem)}}">Quitar producto</a></td>
-               
+            <td align="center"><a class="btn btn-warning" href="{{route('mostrar_review', $carritoItem)}}">Ver Reviews</a></td>
+                
                 @php
                 $auxPrecioTotal = $auxPrecioTotal + $carritoItem->precio_producto*$carritoItem->cantidad_producto;   
                 $auxCantidadTotal = $auxCantidadTotal + $carritoItem->cantidad_producto
                 @endphp
 
               
-        </tr>    
+        </tr>  
         @empty
         <tr>
              
         </tr>
         @endforelse
     <tr class="table-primary"> 
-        <td>Total compra:</td> 
-        <td><span class="badge badge-primary badge-pill">{{ $auxCantidadTotal}}</span> </td>
+        <td >Total compra:</td> 
+        <td align="center"><span class="btn btn-primary">{{ $auxCantidadTotal}}</span> </td>
         <td>{{ $auxPrecioTotal}} </td>
-        <td align="center"><a class="btn btn-danger" href="{{route('carrito.borrarTodo')}}">Quitar Todo</a> 
+        <td align="center"> 
         @auth
+            @foreach ($carrito as $carritoItem)
+            <a class="btn btn-danger" href="{{route('carrito.borrarTodo')}}">Quitar Todo</a>
             <a class="btn btn-primary" href="{{ route('pedidos.index') }}">Ir al pago</a> 
+            @break
+            @endforeach
         @endauth
         </td>
          

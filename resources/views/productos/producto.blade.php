@@ -41,7 +41,7 @@
                             <h4>${{$item->Precio}}</h4>
                         </div>
                         
- 
+  
                         @auth
                             @if($item->Cantidad > 0)
                                 @if(Auth::user()->typeuser == 'Cliente')
@@ -52,7 +52,7 @@
                             @else
                             <a href="" class="btn btn-primary ">Stock Insuficiente</a>
                             @endif
-                            @if(Auth::user()->typeuser=='Administrador')
+                            @if(Auth::user()->typeuser=='Administrador' || Auth::user()->typeuser=='Encargado de inventario')
                             <a href="{{route('editar_producto', $item)}}" class="btn btn-secondary ">Editar</a>
                             
                             <form action="{{route('eliminar_producto', $item)}}" method="POST" class="d-inline">

@@ -31,15 +31,21 @@
             <td>{{ $item->fecha_compra }}</td>
             <td>{{ $item->descripcion }}</td>
             <td>{{ $item->total }}</td>
-            <td>#</td>
-            <td>
+            <td>{{ $item->fecha_envio }}</td>
+            <td align="center"> 
+                @if($item->fecha_envio == NULL)
                 <a href="{{route('ingresar_envio', $item)}}" class="btn btn-primary ">Definir envio</a>
+                @else
+                <a href="{{route('eliminar_fecha_envio', $item->id)}}" class="btn btn-danger ">Eliminar Fecha de envio</a>
                 <a href="{{route('editar_envio', $item)}}" class="btn btn-warning ">Editar envio</a>
-                <a href="#" class="btn btn-success ">Confirmar envio</a>
+                @endif
+
+                
+ 
                 {{--<form action="{{route('eliminar_envio', $item->id)}}" method="POST" class="d-inline">
                     @method('DELETE')
                     @csrf
-                    <button class="btn btn-danger" type="submit" onclick="return confirm('¿Borrar envio?') ">Eliminar envio</button>
+                    <button class="btn btn-danger" type="submit" onclick="return confirm('¿Borrar envio? Esto no se puede deshacer.') ">Eliminar envio</button>
                 </form>--}}
             </td>
 

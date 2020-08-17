@@ -32,7 +32,7 @@
 
     <li class="nav-item dropdown ">
       <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
-        Equpos
+        Equipos
       </a>
       <div class="dropdown-menu" >
         <a class="dropdown-item" href="{{ route('mostrar_producto') }}">Ver Equipos</a>
@@ -64,13 +64,26 @@
     <li class="nav-item">
       <a class="nav-link text-light" href="{{ route('mostrar_pedidos') }}">Confirmacion de envios</a>
     </li>
+
+
+  @elseif(Auth::user()->typeuser=='Encargado de inventario')
+    <li class="nav-item dropdown ">
+      <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+        Equipos
+      </a>
+      <div class="dropdown-menu" >
+        <a class="dropdown-item" href="{{ route('mostrar_producto') }}">Ver Equipos</a>
+        <a class="dropdown-item " href="{{ route('ingresar_producto') }}" >Ingresar nuevo producto </a>
+      </div>
+    </li>
+
   @elseif(Auth::user()->typeuser=='Encargado de ventas')         
     
 
     <li class="nav-item">
       <a class="nav-link text-light"  href="{{ route('mostrar_producto') }}">Equipos</a>
     </li>
-
+    
     <li class="nav-item dropdown ">
       <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
         Ventas
@@ -80,6 +93,10 @@
         <a class="dropdown-item " href="{{ route('pedidos.indiv') }}" >Asignar ensamblador </a>
       </div>
     </li>
+    <li class="nav-item">
+      <a class="nav-link text-light"  href="{{ route('mostrar_reclamos') }}">Reclamos</a>
+    </li>
+
     <br/>
    
  
@@ -122,8 +139,8 @@
                 <a class="dropdown-item " href="{{ route('edit',Auth::user())}}"> Editar Datos de la cuenta</a>
                 @if(Auth::user()->typeuser=="Cliente")
                 <a class="dropdown-item " href="{{ route('ingresar' )}}">Editar Datos de envio</a>
-                <a class="dropdown-item " href="{{ route('eliminarc', Auth::user()->id)}}">Eliminar cuenta </a>
-
+                <!--<a class="dropdown-item " href="{{ route('eliminarc', Auth::user()->id)}}">Eliminar cuenta </a>-->
+                <a class="dropdown-item" href="{{ route('eliminarc',  Auth::user()->id)}}"  onclick="return confirm('Estas seguro de eliminar esta cuenta?');">Eliminar cuenta</a>
                 @endif
                 <a class="dropdown-item " href="#" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

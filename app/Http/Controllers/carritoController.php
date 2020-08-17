@@ -27,13 +27,16 @@ class carritoController extends Controller
         # ------ Actualización de stock ------
         foreach($carrito as $items){
             if($items['nombre_producto'] == $producto['Nombre']){
-                $carritoItem = carrito::findOrFail($items['id']);
-                $carritoItem->cantidad_producto = $items['cantidad_producto'] + 1;
-                $carritoItem->save();
-
-                $producto->Cantidad = $auxCantidad - 1; 
-
-                $producto->save();
+                if($auxCantidad > 0){
+                    $carritoItem = carrito::findOrFail($items['id']);
+                    $carritoItem->cantidad_producto = $items['cantidad_producto'] + 1;
+                    $carritoItem->save();
+                    $producto->Cantidad = $auxCantidad - 1; 
+                    $producto->save();
+                }
+                else{
+                    print '<script language="JavaScript"> alert("¡Producto sin Stock!"); </script>';
+                }
 
                 return view('carrito.show', compact('carrito'));
             }
@@ -52,17 +55,22 @@ class carritoController extends Controller
     }
     public function destroy($id)
     {
-        $productos_stock = Producto::get();
-        $productoEliminar = carrito::findOrFail($id);
+        $productos_stock = Producto::get(); #Productos
+        $productoEliminar = carrito::findOrFail($id); # Elementos en Carrito
         foreach($productos_stock as $productos_stockItem){
             if($productoEliminar['nombre_producto'] == $productos_stockItem['Nombre']){
                 $producto = Producto::findOrFail($productos_stockItem['id']);
-                $producto->Cantidad = $producto['Cantidad'] + $productoEliminar['cantidad_producto'];
-                $producto->save();
+                if($productoEliminar->cantidad_producto > 0){
+                    $producto->Cantidad = $producto['Cantidad'] + 1;
+                    $productoEliminar['cantidad_producto'] -= 1; 
+                    $producto->save();
+                    $productoEliminar->save();
+                    if($productoEliminar->cantidad_producto === 0){
+                        $productoEliminar->delete();
+                    }
+                }
             }
         }
-
-        $productoEliminar->delete();
 
         return back()->with('mensaje','Producto eliminado su pedido');
     }

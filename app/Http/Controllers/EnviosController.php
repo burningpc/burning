@@ -46,7 +46,18 @@ class EnviosController extends Controller
             'id_compra'=>'required',
             'fecha_entrega'=>'required'
         ]);
-
+        
+        $Envios = Envio::get();
+        foreach ($Envios as $ItemEnvio) {
+            if($ItemEnvio->id == $request->id_compra){
+                $pedido = Pedido::findOrFail($request->id_compra);
+                $pedido['fecha_envio'] = $request->fecha_entrega;
+                $ItemEnvio['fecha_entrega'] = $request->fecha_entrega;
+                $ItemEnvio->save();
+                $pedido->save();
+                return back()->with('mensaje', 'Fecha agregada'); 
+            }
+        }
         $newEnvio = new Envio;
         $newEnvio->id = $request->id_compra;
         $newEnvio->rut_ensamblador = $request->rut_ensamblador;
@@ -54,7 +65,9 @@ class EnviosController extends Controller
         $newEnvio->id_compra = $request->id_compra;
         $newEnvio->fecha_entrega = $request->fecha_entrega;
         
-
+        $pedido = Pedido::findOrFail($request->id_compra);
+        $pedido['fecha_envio'] = $request->fecha_entrega;
+        $pedido->save();
         $newEnvio->save();
 
         return back()->with('mensaje', 'Fecha agregada'); 
@@ -106,10 +119,12 @@ class EnviosController extends Controller
         $envio->id_compra = $request->id_compra;
         $envio->fecha_entrega = $request->fecha_entrega;
         
-       
+        $pedido = Pedido::findOrFail($request->id_compra);
+        $pedido['fecha_envio'] = $request->fecha_entrega;
+        $pedido->save();
         $envio->save();
 
-        return back()->with('mensaje', 'Producto editado!'); 
+        return back()->with('mensaje', 'Fecha editada!'); 
     }
 
     /**
@@ -124,5 +139,16 @@ class EnviosController extends Controller
         $envioEliminar->delete();
 
         return back()->with('mensaje','Producto eliminado');
+    }
+
+    public function destroyDate($id)
+    {
+        $envio = Envio::findOrFail($id);
+        $pedido = Pedido::findOrFail($envio->id_compra);
+        $envio['fecha_entrega'] = NULL;
+        $pedido['fecha_envio'] = NULL;
+        $pedido->save();
+        $envio->save();
+        return back()->with('mensaje','Fecha eliminida');
     }
 }
