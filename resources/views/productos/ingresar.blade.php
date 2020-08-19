@@ -48,7 +48,7 @@
                 <input type = "file" name="Imagen" class="form-control mb-2" value="{{old('Imagen')}}">
 
                 @auth
-                    @if(Auth::user()->typeuser=='Administrador')
+                    @if(Auth::user()->typeuser=='Encargado de inventario')
                         <button class="btn btn-warning btn-lg btn-block" type="submit">Agregar producto</button>
                     @endif
                 @endauth

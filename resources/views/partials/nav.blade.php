@@ -28,8 +28,8 @@
             <img src="{{asset('logo.png')}}" class="img-fluid" alt="Responsive image">
           </div>
         </a>
-  @if(Auth::user()->typeuser=='Administrador')
-
+  
+  @if(Auth::user()->typeuser=='Encargado de inventario')
     <li class="nav-item dropdown ">
       <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
         Equipos
@@ -40,6 +40,7 @@
       </div>
     </li>
 
+  @elseif(Auth::user()->typeuser=='Administrador')
     <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle " id="navbardrop" data-toggle="dropdown" >Usuarios</a>         
             <div class="dropdown-menu">
